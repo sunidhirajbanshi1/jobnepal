@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include '../auth/config.php';
@@ -46,97 +45,156 @@ try {
     <title>Manage Jobs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
+        /* Your existing CSS styles */
+        /* General Styles */
+:root {
+    --primary-color: #673ab7; /* Purple */
+    --secondary-color: #512da8; /* Darker Purple */
+    --background-color: #f8f9fa; /* Light Gray */
+    --card-background: #fff; /* White */
+    --text-color: #333; /* Dark Gray */
+    --light-text-color: #777; /* Light Gray */
+    --border-radius: 8px; /* Rounded corners */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
 
-        .container {
-            width: 100%;
-            margin: 20px auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
 
-        h1 {
-            color: #343a40;
-            margin-bottom: 20px;
-        }
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+.container {
+    width: 140%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
 
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-        th {
-            background-color: #673ab7;
-            color: white;
-        }
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        tr:hover {
-            background-color: #f5f5f5;
-        }
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
 
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
+tr:hover {
+    background-color: #f5f5f5;
+}
 
-        .btn {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-            color: white;
-        }
+/* Buttons and Actions */
+.actions {
+    display: flex;
+    gap: 10px;
+}
 
-        .btn-edit {
-            background-color: #28a745; /* Green */
-        }
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
 
-        .btn-edit:hover {
-            background-color: #218838;
-        }
+.btn-edit {
+    background-color: #28a745; /* Green */
+}
 
-        .btn-delete {
-            background-color: #dc3545; /* Red */
-        }
+.btn-edit:hover {
+    background-color: #218838; /* Darker Green */
+}
 
-        .btn-delete:hover {
-            background-color: #c82333;
-        }
+.btn-delete {
+    background-color: #dc3545; /* Red */
+}
 
-        .message {
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
+.btn-delete:hover {
+    background-color: #c82333; /* Darker Red */
+}
 
-        .message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
+.btn-view {
+    background-color: var(--primary-color);
+}
 
-        .message.danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+.btn-view:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-view i {
+    margin-right: 5px;
+}
+
+/* Message Styles */
+.message {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.message.success {
+    background-color: #d4edda; /* Light Green */
+    color: #155724; /* Dark Green */
+    border: 1px solid #c3e6cb;
+}
+
+.message.danger {
+    background-color: #f8d7da; /* Light Red */
+    color: #721c24; /* Dark Red */
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -164,8 +222,8 @@ try {
                         <th>Experience</th>
                         <th>Type</th>
                         <th>Created At</th>
-                        
                         <th>Actions</th>
+                        <th> Manage Applications</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -179,8 +237,8 @@ try {
                             <td><?= htmlspecialchars($job['experience']) ?></td>
                             <td><?= htmlspecialchars($job['job_type']) ?></td>
                             <td><?= htmlspecialchars(date('Y-m-d', strtotime($job['created_at']))) ?></td>
-                           
-                           <td class="actions">
+                            
+                            <td class="actions">
                                 <a href="edit_job.php?job_id=<?= htmlspecialchars($job['id']) ?>" class="btn btn-edit">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
@@ -189,6 +247,11 @@ try {
                                     <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this job?')">
                                         <i class="fas fa-trash"></i> Delete
                                     </button>
+                                    <td>
+                                <a href="manage_applications.php?job_id=<?= htmlspecialchars($job['id']) ?>" class="btn btn-view">
+                                    <i class="fas fa-eye"></i> View (<?= htmlspecialchars($job['application_count']) ?>)
+                                </a>
+                            </td>
                                 </form>
                             </td>
                         </tr>

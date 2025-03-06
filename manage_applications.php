@@ -76,184 +76,176 @@ try {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="YOUR_SRI_HASH" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* General Styles */
-        :root {
-            --primary-color: #673ab7;
-            --secondary-color: #512da8;
-            --tertiary-color: #f39c12;
-            --text-color: #333;
-            --light-text-color: #777;
-            --background-color: #f9f9f9;
-            --card-background: #fff;
-            --border-radius: 8px;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
+        /* Your existing CSS styles */
+        /* Reset some default styling */
+body, h2, table {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
 
-        h2 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+/* Container for applications */
+.applications-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        /* Table Styles */
-        .applications-container {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* Header */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--card-background);
-            box-shadow: 0 2px 4px var(--shadow-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        th {
-            background-color: var(--primary-color);
-            color: white;
-            font-weight: bold;
-        }
+table th {
+    background-color: #f4f4f4;
+    color: #555;
+    font-size: 14px;
+}
 
-        tr:hover {
-            background-color: #f5f5f5;
-        }
+table td {
+    font-size: 14px;
+    color: #333;
+}
 
-        .status-badge {
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-block;
-        }
+/* Status badge colors */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
 
-        .status-badge.pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
+.status-badge.accepted {
+    background-color: #4caf50;
+    color: white;
+}
 
-        .status-badge.accepted {
-            background-color: #d4edda;
-            color: #155724;
-        }
+.status-badge.rejected {
+    background-color: #f44336;
+    color: white;
+}
 
-        .status-badge.rejected {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
+.status-badge.pending {
+    background-color: #ff9800;
+    color: white;
+}
 
-        .action-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
+/* Empty state styling */
+.empty-state {
+    text-align: center;
+    padding: 50px 0;
+    color: #777;
+}
 
-        .btn {
-            padding: 0.5rem 1rem;
-            border-radius: var(--border-radius);
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
-        }
+.empty-state i {
+    color: #ddd;
+}
 
-        .btn.accept {
-            background-color: #4caf50;
-            color: white;
-        }
+.empty-state p {
+    font-size: 18px;
+    margin-top: 10px;
+}
 
-        .btn.reject {
-            background-color: #f44336;
-            color: white;
-        }
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .btn.view-resume {
-            background-color: var(--primary-color);
-            color: white;
-        }
+.action-buttons button,
+.action-buttons a {
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+}
 
-        .btn:hover {
-            opacity: 0.9;
-        }
+.action-buttons button {
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
 
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            background: var(--card-background);
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 4px var(--shadow-color);
-        }
+.action-buttons button.accept {
+    background-color: #4caf50;
+    color: white;
+}
 
-        .empty-state i {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
+.action-buttons button.reject {
+    background-color: #f44336;
+    color: white;
+}
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            align-items: center;
-            justify-content: center;
-        }
+.action-buttons button.accept:hover {
+    background-color: #45a049;
+}
 
-        .modal-content {
-            position: relative;
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            border-radius: var(--border-radius);
-        }
+.action-buttons button.reject:hover {
+    background-color: #d32f2f;
+}
 
-        .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.action-buttons a.view-resume {
+    background-color: #2196f3;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-align: center;
+}
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+.action-buttons a.view-resume:hover {
+    background-color: #1976d2;
+}
 
-        .resume-content {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
+/* Responsive Styling */
+@media (max-width: 768px) {
+    table th, table td {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .action-buttons button,
+    .action-buttons a {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+        
     </style>
 </head>
 
@@ -298,7 +290,7 @@ try {
                                         <button type="submit" name="status" value="accepted" class="btn accept">Accept</button>
                                         <button type="submit" name="status" value="rejected" class="btn reject">Reject</button>
                                     </form>
-                                    <button class="btn view-resume" onclick="viewResume('<?= htmlspecialchars($application['resume']) ?>')">View Resume</button>
+                                    <a href="../uploads/resumes/<?= htmlspecialchars($application['resume']) ?>" class="btn view-resume" download>Download Resume</a>
                                 </div>
                             </td>
                         </tr>
@@ -307,37 +299,6 @@ try {
             </table>
         <?php endif; ?>
     </div>
-
-    <!-- Modal for Resume -->
-    <div id="resumeModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">×</span>
-            <h3>Resume</h3>
-            <div class="resume-content" id="resumeContent"></div>
-        </div>
-    </div>
-
-    <script>
-        function viewResume(resume) {
-            const modal = document.getElementById('resumeModal');
-            const resumeContent = document.getElementById('resumeContent');
-            resumeContent.textContent = resume;
-            modal.style.display = "flex";
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('resumeModal');
-            modal.style.display = "none";
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function (event) {
-            const modal = document.getElementById('resumeModal');
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 </body>
 
 </html>
