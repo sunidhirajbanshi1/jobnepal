@@ -437,15 +437,10 @@ $total_applications = $stmt->fetchColumn();
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-target="manage_jobs">
                             <i class="fas fa-briefcase"></i>
-                            Manage Jobs
+                            Manage Jobs and Application
                         </a>
                     </li>
-                    <li class="nav-item">
-                    <a href="manage_applications.php?job_id=<?= $job['id'] ?>">
-                    <i class="fas fa-file-alt"></i>
-                           Manage Application
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-target="company_profile">
                             <i class="fas fa-building"></i>
